@@ -27,7 +27,7 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             GameObject.Instantiate(car, transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(2.0f);
 
         }
     }
