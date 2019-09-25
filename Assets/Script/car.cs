@@ -24,8 +24,15 @@ public class car : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player"))
         {
+            GameObject hit = collision.gameObject;
+            Darah healthbar = hit.GetComponent<Darah>();
 
-            SceneManager.LoadScene("Lose");
+            if (healthbar != null)
+            {
+                healthbar.TakeDamage(35);
+            }
+            Destroy(gameObject);
+            //SceneManager.LoadScene("Lose");
 
         }
 
