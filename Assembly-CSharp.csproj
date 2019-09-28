@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\car.cs" />
+    <Compile Include="Assets\Script\ChangeScene.cs" />
     <Compile Include="Assets\Script\Darah.cs" />
     <Compile Include="Assets\Script\People.cs" />
     <Compile Include="Assets\Script\PeopleSpawner.cs" />
