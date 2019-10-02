@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Text textScore;
 
     int score = 0;
+    bool isFacingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,15 @@ public class Player : MonoBehaviour
     {
 
         float moveHorizontal = Input.GetAxis("Horizontal");
+
+        if((moveHorizontal < 0f && isFacingRight) || (moveHorizontal > 0f && !isFacingRight))
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 temp = transform.localScale;
+            temp.x *= -1;
+            transform.localScale = temp;
+        }
+
         Vector3 tempVect = new Vector3(moveHorizontal, 0, 0);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
