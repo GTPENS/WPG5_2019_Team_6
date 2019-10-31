@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         if(collision.tag == "Goal" && render.color == new Color(238f / 255f, 53f / 255f, 224f / 255f))
         {
             render.color = new Color(255f / 255f, 107f / 255f, 93f / 255f);
-            FindObjectOfType<PeopleSpawner>().Spawn();
+            FindObjectOfType<SpawnManager>().Spawn();
             score++;
 
             textScore.text = score + "";

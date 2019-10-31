@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
-  AppID: 
+  AppID: c97a623a-124b-4a54-b1a3-65a893eb4cba
   VoiceAppID: 
   ChatAppID: 
-  HostType: 0
+  HostType: 1
   PreferredRegion: 0
   EnabledRegions: -1
   Protocol: 0
@@ -27,5 +27,14 @@ MonoBehaviour:
   PunLogging: 0
   NetworkLogging: 1
   RunInBackground: 1
-  RpcList: []
-  DisableAutoOpenWizard: 0
+  RpcList:
+  - Chat
+  - DestroyRpc
+  - InstantiateRpc
+  - PickupItemInit
+  - PunPickup
+  - PunPickupSimple
+  - PunRespawn
+  - RequestForPickupItems
+  - RequestForPickupTimes
+  DisableAutoOpenWizard: 1
