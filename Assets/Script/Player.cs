@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     SpriteRenderer render;
     public Text textScore;
     public int amount = 0;
+    public Animation anim;
 
     int score = 0;
     bool isFacingRight = true;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = gameObject.GetComponent<Animation>();
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
     }
