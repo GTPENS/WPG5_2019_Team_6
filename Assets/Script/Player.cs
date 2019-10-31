@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed;
     SpriteRenderer render;
     public Text textScore;
+    public int amount = 0;
 
     int score = 0;
     bool isFacingRight = true;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     {
 
         float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
         if((moveHorizontal < 0f && isFacingRight) || (moveHorizontal > 0f && !isFacingRight))
         {
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
             transform.localScale = temp;
         }
 
-        Vector3 tempVect = new Vector3(moveHorizontal, 0, 0);
+        Vector3 tempVect = new Vector3(moveHorizontal, moveVertical, 0);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
 
@@ -42,11 +44,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Goal" && render.color == new Color(238f / 255f, 53f / 255f, 224f / 255f))
+        if(collision.tag == "Goal" && amount > 0)
         {
             render.color = new Color(255f / 255f, 107f / 255f, 93f / 255f);
-            FindObjectOfType<SpawnManager>().Spawn();
-            score++;
+            FindObjectOfType<SpawnManager>().SpawnAll();
+            score += amount;
+            amount = 0;
 
             textScore.text = score + "";
         }

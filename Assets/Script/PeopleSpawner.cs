@@ -2,12 +2,14 @@
 
 public class PeopleSpawner : MonoBehaviour
 {
-    public GameObject peopleObject;
+    public int position;
+    public People peopleObject;
     public bool isExist = false;
 
     public void Spawn()
     {
         isExist = true;
-        Instantiate(peopleObject, transform.position, Quaternion.identity);
+        People p = Instantiate(peopleObject, transform.position, Quaternion.identity);
+        p.position = position;
     }
 }

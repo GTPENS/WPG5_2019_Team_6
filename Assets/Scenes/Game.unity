@@ -679,6 +679,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611206781}
   m_CullTransparentMesh: 0
+--- !u!1 &684933552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684933554}
+  - component: {fileID: 684933553}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &684933553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684933552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcb62972fb0c11449e54557959d273e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerPoints:
+  - {fileID: 2124343269}
+  - {fileID: 1804583650}
+--- !u!4 &684933554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684933552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768615254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1464,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1804583649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804583651}
+  - component: {fileID: 1804583650}
+  m_Layer: 0
+  m_Name: SpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804583650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804583649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9702b538c861ae7419aa3d588dac2195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: 1
+  peopleObject: {fileID: 1289100573039943925, guid: 1921841e4acdd734c8985c9ac3f73a30,
+    type: 3}
+  isExist: 0
+--- !u!4 &1804583651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804583649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.51, y: -3.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818922819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1588,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.19, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2000965472
 GameObject:
@@ -1531,7 +1624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -1.000824, y: -142.1}
+  m_AnchoredPosition: {x: -1.0008545, y: -142.1}
   m_SizeDelta: {x: 197.7, y: 30.7}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2000965474
@@ -1600,7 +1693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2124343269
 MonoBehaviour:
@@ -1614,7 +1707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9702b538c861ae7419aa3d588dac2195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  peopleObject: {fileID: 4496730157754688964, guid: 1921841e4acdd734c8985c9ac3f73a30,
+  position: 0
+  peopleObject: {fileID: 1289100573039943925, guid: 1921841e4acdd734c8985c9ac3f73a30,
     type: 3}
   isExist: 0
 --- !u!1 &2128199903
