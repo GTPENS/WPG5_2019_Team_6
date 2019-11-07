@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class car : MonoBehaviour
 {
-    
 
+    public GameObject[] bangs;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class car : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        int randomBang = Random.Range(0, bangs.Length);
         if (collision.gameObject.tag.Equals("Player"))
         {
             GameObject hit = collision.gameObject;
@@ -31,6 +31,7 @@ public class car : MonoBehaviour
             {
                 healthbar.TakeDamage(35);
             }
+            Instantiate(bangs[randomBang], collision.gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
             //SceneManager.LoadScene("Lose");
 
