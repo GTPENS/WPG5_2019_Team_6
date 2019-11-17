@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     SpriteRenderer render;
     public Text textScore;
     public int amount = 0;
-    public Animation anim;
+    Animator anim;
+    float dirX;
 
     int score = 0;
     bool isFacingRight = true;
@@ -18,7 +19,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = gameObject.GetComponent<Animation>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
     }
@@ -36,12 +37,29 @@ public class Player : MonoBehaviour
             Vector3 temp = transform.localScale;
             temp.x *= -1;
             transform.localScale = temp;
+            
         }
+       
 
         Vector3 tempVect = new Vector3(moveHorizontal, moveVertical, 0);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
+    }
 
+    private void Update()
+    {
+        dirX = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+
+        transform.position = new Vector2(transform.position.x + dirX, transform.position.y);
+
+        if (dirX != 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("HackAnim"))
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
