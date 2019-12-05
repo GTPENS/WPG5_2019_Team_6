@@ -131,10 +131,13 @@
     <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+    <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\car.cs" />
     <Compile Include="Assets\Script\ChangeScene.cs" />
     <Compile Include="Assets\Script\Darah.cs" />
     <Compile Include="Assets\Script\DestoryAnim.cs" />
+    <Compile Include="Assets\Script\Patrol.cs" />
+    <Compile Include="Assets\Script\Patrol2.cs" />
     <Compile Include="Assets\Script\People.cs" />
     <Compile Include="Assets\Script\PeopleSpawner.cs" />
     <Compile Include="Assets\Script\Player.cs" />
