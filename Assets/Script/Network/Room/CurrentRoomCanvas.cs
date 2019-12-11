@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class CurrentRoomCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void OnClickStartSync() {
+        if (!PhotonNetwork.isMasterClient)
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PhotonNetwork.LoadLevel(3);
     }
 }

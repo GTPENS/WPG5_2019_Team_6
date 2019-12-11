@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public PeopleSpawner[] spawnerPoints;
+    public Player player;
 
     bool[] spawnerStatus = { false, false };
 

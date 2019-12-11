@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Photon.MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed;
     SpriteRenderer render;
-    public Text textScore;
+    
     public int amount = 0;
     Animator anim;
     float dirX;
@@ -16,7 +16,12 @@ public class Player : MonoBehaviour
     int score = 0;
     bool isFacingRight = true;
 
-    // Start is called before the first frame update
+    private PhotonView photonView;
+
+    private void Awake() {
+        photonView = GetComponent<PhotonView>();
+    }
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -27,6 +32,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!photonView.isMine)
+            return;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -48,6 +55,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!photonView.isMine)
+            return;
+           
         dirX = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
 
         transform.position = new Vector2(transform.position.x + dirX, transform.position.y);

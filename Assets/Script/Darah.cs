@@ -15,8 +15,10 @@ public class Darah : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Destroy(gameObject);
-            SceneManager.LoadScene("Lose");
+            //Destroy(gameObject);
+            //SceneManager.LoadScene("Lose");
+
+            gameObject.SetActive(false);
         }
 
         healthbar.sizeDelta = new Vector2(currentHealth * 2, healthbar.sizeDelta.y);
