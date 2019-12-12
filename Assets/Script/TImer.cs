@@ -29,7 +29,8 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Lose");
+            //SceneManager.LoadScene("Lose");
+            PlayerNetwork.Instance.TimeOff();
         }
 
     }

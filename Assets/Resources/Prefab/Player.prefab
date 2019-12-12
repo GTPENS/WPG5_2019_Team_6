@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7296232240969087776}
   - component: {fileID: 7296232240969087779}
   - component: {fileID: 7296232240969087778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -99,7 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   textScore: {fileID: 0}
+  enemyScore: {fileID: 0}
   amount: 0
+  isDead: 0
 --- !u!61 &7296232240969087791
 BoxCollider2D:
   m_ObjectHideFlags: 0

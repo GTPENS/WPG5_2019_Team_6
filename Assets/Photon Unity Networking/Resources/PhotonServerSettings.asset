@@ -37,4 +37,11 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
+  - ScoreMessage
+  - TimeOffMessage
+  - DeadMessage
+  - RPC_LoadGameOthers
+  - RPC_LoadedGameScene
+  - RPC_CreatePlayer
+  - WinnerMessage
   DisableAutoOpenWizard: 1

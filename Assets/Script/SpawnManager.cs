@@ -23,7 +23,8 @@ public class SpawnManager : MonoBehaviour
     }
 
     public void SpawnAll() {
-        FindObjectOfType<Player>().speed = 10;
+        if(NetworkManager.instance.currentPlayer != null)
+            NetworkManager.instance.currentPlayer.speed = 10;
 
         if (!spawnerStatus[0])
             spawnerPoints[0].Spawn();
@@ -35,8 +36,8 @@ public class SpawnManager : MonoBehaviour
         spawnerStatus[1] = true;
     }
 
-    public void PickUp(int position) {
+    public void PickUp(int position, Player p) {
         spawnerStatus[position] = false;
-        FindObjectOfType<Player>().speed -= 3;
+        p.speed -= 3;
     }
 }

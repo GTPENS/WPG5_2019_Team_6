@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text textScore;
-    public Player currentPlayer;
+    public GameObject panelStatus;
 
     public static GameManager Instance;
 
     private void Awake() {
         Instance = this;
+    }
+
+    public void ShowPanel() {
+        panelStatus.SetActive(true);
+    }
+
+    public void SetPanelText(string teks) {
+        panelStatus.GetComponentInChildren<Text>().text = teks;
     }
 }

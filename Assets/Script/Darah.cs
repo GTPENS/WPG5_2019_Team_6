@@ -12,15 +12,27 @@ public class Darah : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+
+        if(healthbar != null)
+            healthbar.sizeDelta = new Vector2(currentHealth * 2, healthbar.sizeDelta.y);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             //Destroy(gameObject);
             //SceneManager.LoadScene("Lose");
 
-            gameObject.SetActive(false);
-        }
+            //Dead(NetworkManager.instance.currentPlayer);
+            PlayerNetwork.Instance.Dead();
 
-        healthbar.sizeDelta = new Vector2(currentHealth * 2, healthbar.sizeDelta.y);
+            GameManager.Instance.SetPanelText("Waiting Result...");
+            GameManager.Instance.ShowPanel();
+        }
+    }
+
+    public void Dead(Player p) {
+        p.gameObject.SetActive(false);
+
+        p.isDead = true;
     }
 }

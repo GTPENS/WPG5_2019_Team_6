@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon;
 
-public class Player : Photon.MonoBehaviour
+public class Player : Photon.MonoBehaviour, IPunObservable
 {
     Rigidbody2D rb;
     public float speed;
     SpriteRenderer render;
-    
+    public Text textScore;
+    public Text enemyScore;
     public int amount = 0;
+    public bool isDead = false;
     Animator anim;
     float dirX;
 
@@ -18,8 +21,12 @@ public class Player : Photon.MonoBehaviour
 
     private PhotonView photonView;
 
+    Vector3 curLocalScale;
+    Vector3 targetPos;
+
     private void Awake() {
         photonView = GetComponent<PhotonView>();
+        photonView.ObservedComponents.Add(this);
     }
 
     void Start()
@@ -27,12 +34,27 @@ public class Player : Photon.MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+
+        NetworkManager.instance.InitAll(this);
+
+        if (!photonView.isMine)
+            return;
+
+        NetworkManager.instance.InitMine(this);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!photonView.isMine)
+        if (!photonView.isMine) {
+            if (curLocalScale != null)
+                transform.localScale = curLocalScale;
+            if (targetPos != null)
+                transform.position = Vector3.Lerp(transform.position, targetPos, 0.25f);
+
+            return;
+        }
+        else if (isDead)
             return;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -44,16 +66,38 @@ public class Player : Photon.MonoBehaviour
             Vector3 temp = transform.localScale;
             temp.x *= -1;
             transform.localScale = temp;
-            
+
+            curLocalScale = transform.localScale;
         }
-       
+
+        if ((moveHorizontal != 0 || moveVertical != 0) && !anim.GetCurrentAnimatorStateInfo(0).IsName("HackAnim")) {
+            anim.SetBool("isWalking", true);
+        }
+        else {
+            anim.SetBool("isWalking", false);
+        }
 
         Vector3 tempVect = new Vector3(moveHorizontal, moveVertical, 0);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
+        tempVect = tempVect.normalized * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.transform.position + tempVect);
     }
 
-    private void Update()
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.isWriting) {
+            if (photonView.isMine) {
+                stream.SendNext(transform.localScale);
+                stream.SendNext(transform.position);
+            }
+        }
+        else {
+            if (!photonView.isMine) {
+                curLocalScale = (Vector3)stream.ReceiveNext();
+                targetPos = (Vector3)stream.ReceiveNext();
+            }
+        }
+    }
+
+    /*private void Update()
     {
         if (!photonView.isMine)
             return;
@@ -70,6 +114,10 @@ public class Player : Photon.MonoBehaviour
         {
             anim.SetBool("isWalking", false);
         }
+    }*/
+
+    public void End() {
+        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,7 +129,22 @@ public class Player : Photon.MonoBehaviour
             score += amount;
             amount = 0;
 
-            textScore.text = score + "";
+            if (photonView.isMine) {
+                print("SENT SCORE: " + score);
+
+                textScore.text = score + "";
+
+                //Sent to enemy
+                photonView.RPC("ScoreMessage", PhotonTargets.Others, score);
+            }
         }
+    }
+
+    [PunRPC]
+    void ScoreMessage(int enyscore) {
+        print("GOT SCORE: " + enyscore + " !");
+
+        if (enemyScore != null)
+            enemyScore.text = enyscore + "";
     }
 }

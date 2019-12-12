@@ -27,7 +27,7 @@ public class car : MonoBehaviour
             GameObject hit = collision.gameObject;
             Darah healthbar = hit.GetComponent<Darah>();
 
-            if (healthbar != null)
+            if (healthbar != null && healthbar.healthbar != null)
             {
                 healthbar.TakeDamage(35);
             }

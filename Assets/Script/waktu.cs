@@ -28,7 +28,8 @@ public class waktu : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Lose");
+            PlayerNetwork.Instance.TimeOff();
+            // SceneManager.LoadScene("Lose");
         }
 
     }
