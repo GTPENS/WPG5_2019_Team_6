@@ -24,4 +24,9 @@ public class ChangeScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Lobby()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
 }
