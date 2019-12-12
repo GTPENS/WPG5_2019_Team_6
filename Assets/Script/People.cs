@@ -21,17 +21,22 @@ public class People : MonoBehaviour
         Player player = FindObjectOfType<Player>();
         int amount = player.amount;
 
-        FindObjectOfType<SpawnManager>().PickUp(position);
+        if (collision.tag == "Player")
+        {
+            FindObjectOfType<SpawnManager>().PickUp(position);
 
-        SpriteRenderer p = player.GetComponent<SpriteRenderer>();
+            SpriteRenderer p = player.GetComponent<SpriteRenderer>();
 
-        if (amount == 0)
-            p.color = new Color(238f / 255f, 53f / 255f, 224f / 255f);
-        else
-            p.color = new Color(138f / 255f, 73f / 255f, 204f / 255f);
+            if (amount == 0)
+                p.color = new Color(238f / 255f, 53f / 255f, 224f / 255f);
+            else
+                p.color = new Color(138f / 255f, 73f / 255f, 204f / 255f);
 
-        player.amount += 1;
+            player.amount += 1;
 
-        Destroy(this.gameObject);
+            Destroy(this.gameObject);
+        }
+        
+        
     }
 }

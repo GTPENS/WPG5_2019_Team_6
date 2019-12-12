@@ -20,6 +20,12 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("Credit");
     }
 
+    public void Lobby()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+
     public void Exit()
     {
         Application.Quit();

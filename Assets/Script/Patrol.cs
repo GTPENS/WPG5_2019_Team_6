@@ -61,18 +61,12 @@ public class Patrol : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = FindObjectOfType<Player>();
-        int amount = player.amount;
 
-        FindObjectOfType<SpawnManager>().PickUp(position);
+        //FindObjectOfType<SpawnManager>().PickUp(position);
 
-        SpriteRenderer p = player.GetComponent<SpriteRenderer>();
-
-        if (amount == 0)
-            p.color = new Color(238f / 255f, 53f / 255f, 224f / 255f);
-        else
-            p.color = new Color(138f / 255f, 73f / 255f, 204f / 255f);
-
-        player.speed = 5;
+        //SpriteRenderer p = player.GetComponent<SpriteRenderer>();
+    
+       player.speed = 9;
 
         Destroy(this.gameObject);
     }
