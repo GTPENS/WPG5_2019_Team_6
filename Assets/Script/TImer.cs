@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     Image timeBar;
     public float maxTime = 60f;
     float timeLeft;
+    bool status = false;
 
 
     void Start()
@@ -21,16 +22,18 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        if (timeLeft > 0)
-        {
+        if (!PlayerNetwork.Instance.clientAlive && !PlayerNetwork.Instance.masterAlive) {
+            status = true;
+        }
+        else if (timeLeft > 0 && !status) {
             //if (!Settings.status) return;
             timeLeft -= Time.deltaTime;
             timeBar.fillAmount = timeLeft / maxTime;
         }
-        else
-        {
-            //SceneManager.LoadScene("Lose");
+        else if (!status) {
+            status = true;
             PlayerNetwork.Instance.TimeOff();
+            // SceneManager.LoadScene("Lose");
         }
 
     }

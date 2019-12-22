@@ -27,6 +27,18 @@ public class ChangeScene : MonoBehaviour
 
     public void Lobby()
     {
+        if (FindObjectOfType<DDOL>() != null) {
+            SceneManager.LoadScene("ReLobby");
+        }
+        else {
+            SceneManager.LoadScene("Lobby");
+        }
+    }
+
+    public void BackLobby()
+    {
+        Destroy(FindObjectOfType<DDOL>().gameObject);
+        PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("Lobby");
     }
 }

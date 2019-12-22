@@ -1127,7 +1127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000021468409, y: -0.00000085811956}
+  m_AnchoredPosition: {x: 0.0000021468409, y: -0.0000009000924}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &814134774
@@ -1592,7 +1592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000021468409, y: 0.000000055293224}
+  m_AnchoredPosition: {x: 0.0000021468409, y: 0.000000013320391}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1505637937
@@ -1863,6 +1863,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e66a3502a927d49bf01c9e8bfb5751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterAlive: 1
+  clientAlive: 1
   PhotonView: {fileID: 0}
 --- !u!114 &1721056295
 MonoBehaviour:
@@ -1986,7 +1988,7 @@ Transform:
   m_LocalScale: {x: 0.952631, y: 0.938214, z: 1.109}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861216762
 GameObject:
@@ -1999,7 +2001,7 @@ GameObject:
   - component: {fileID: 1861216764}
   - component: {fileID: 1861216763}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DDOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,7 +2032,7 @@ Transform:
   m_Children:
   - {fileID: 1721056293}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076430577
 GameObject:

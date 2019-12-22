@@ -7,8 +7,10 @@ public class LobbyNetwork : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("Trying connect...");
-        PhotonNetwork.ConnectUsingSettings("0.0.0");
+        if (!PhotonNetwork.connected) {
+            print("Trying connect...");
+            PhotonNetwork.ConnectUsingSettings("0.0.0");
+        }
     }
 
     private void OnConnectedToMaster() {

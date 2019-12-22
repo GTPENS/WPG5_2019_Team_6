@@ -25,7 +25,7 @@ public class Darah : MonoBehaviour
             //Dead(NetworkManager.instance.currentPlayer);
             PlayerNetwork.Instance.Dead();
 
-            GameManager.Instance.SetPanelText("Waiting Result...");
+            //GameManager.Instance.SetPanelText("Waiting Result...");
             GameManager.Instance.ShowPanel();
         }
     }

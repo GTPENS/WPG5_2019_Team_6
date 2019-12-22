@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject panelStatus;
+    public GameObject buttonBackPanel;
+    public Text textPanel;
 
     public static GameManager Instance;
 
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetPanelText(string teks) {
-        panelStatus.GetComponentInChildren<Text>().text = teks;
+        textPanel.text = teks;
+    }
+    public void ShowButtonBack() {
+        buttonBackPanel.SetActive(true);
     }
 }

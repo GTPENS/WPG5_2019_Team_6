@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerNetwork : MonoBehaviour
 {
-    bool masterAlive = true;
-    bool clientAlive = true;
+    public bool masterAlive = true;
+    public bool clientAlive = true;
     public static PlayerNetwork Instance;
     public string PlayerName { get; private set; }
 
@@ -107,12 +107,15 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     void WinnerMessage(string winner) {
         if ((winner == "Master" && PhotonNetwork.isMasterClient) || (winner == "Client" && !PhotonNetwork.isMasterClient)) {
+            Debug.Log("MENANG!!");
             GameManager.Instance.SetPanelText("You Win :)");
         }
         else if ((winner == "Master" && !PhotonNetwork.isMasterClient) || (winner == "Client" && PhotonNetwork.isMasterClient)) {
+            Debug.Log("KALAH!!");
             GameManager.Instance.SetPanelText("You Lose :(");
         }
         else {
+            Debug.Log("IMBANG!!");
             GameManager.Instance.SetPanelText("Draw :|");
         }
 
@@ -120,5 +123,6 @@ public class PlayerNetwork : MonoBehaviour
         NetworkManager.instance.enemyPlayer.End();
 
         GameManager.Instance.ShowPanel();
+        GameManager.Instance.ShowButtonBack();
     }
 }
